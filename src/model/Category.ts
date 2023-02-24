@@ -1,8 +1,10 @@
+import crypto from "node:crypto";
+
 export class Category {
   id?: string;
+  created_at?: Date;
   name: string;
   description: string;
-  created_at?: Date;
 
   constructor() {
     if (!this.id) {
