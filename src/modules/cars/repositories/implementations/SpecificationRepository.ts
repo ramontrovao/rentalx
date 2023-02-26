@@ -1,9 +1,9 @@
 import crypto from "node:crypto";
-import { Specification } from "../model/Specification";
+import { Specification } from "../../model/Specification";
 import {
   ICreateSpecificationDTO,
   ISpecificationsRepository,
-} from "./ISpecificationRepository";
+} from "../ISpecificationRepository";
 
 export class SpecificationRepository implements ISpecificationsRepository {
   private specifications: Specification[];
