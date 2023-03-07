@@ -9,7 +9,13 @@ export class CreateSpecificationController {
       CreateSpecificationService
     );
 
-    await createSpecificationService.execute({ name, description });
+    try {
+      await createSpecificationService.execute({ name, description });
+    } catch {
+      res
+        .status(500)
+        .json({ error: { message: "Specification already exists!" } });
+    }
 
     res.status(201).send();
   }
