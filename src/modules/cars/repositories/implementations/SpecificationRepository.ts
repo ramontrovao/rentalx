@@ -1,34 +1,30 @@
 import crypto from "node:crypto";
-import { Specification } from "../../entities/Specification";
+import { Repository } from "typeorm";
+import { Specification } from "../../../../entities/Specification";
+import AppDataSource from "../../../../database/ormconfig";
 import {
   ICreateSpecificationDTO,
   ISpecificationsRepository,
 } from "../ISpecificationRepository";
 
 export class SpecificationRepository implements ISpecificationsRepository {
-  private specifications: Specification[];
+  private repository: Repository<Specification>;
 
   constructor() {
-    this.specifications = [];
+    this.repository = AppDataSource.getRepository(Specification);
   }
 
-  create({ description, name }: ICreateSpecificationDTO): void {
-    const specification = new Specification();
-
-    Object.assign(specification, {
-      description,
+  async create({ description, name }: ICreateSpecificationDTO): Promise<void> {
+    const newSpecification = this.repository.create({
       name,
-      created_at: new Date(),
-      id: crypto.randomUUID(),
+      description,
     });
 
-    this.specifications.push(specification);
+    await this.repository.save(newSpecification);
   }
 
-  findByName(name: string) {
-    const specificationFound = this.specifications.find(
-      (specification) => specification.name === name
-    );
+  async findByName(name: string) {
+    const specificationFound = await this.repository.findOneBy({ name });
 
     return specificationFound;
   }

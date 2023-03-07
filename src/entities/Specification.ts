@@ -1,16 +1,18 @@
 import crypto from "node:crypto";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
+@Entity("specifications")
 export class Specification {
+  @PrimaryColumn()
   id?: string;
-  created_at?: Date;
+  @Column()
+  created_at: Date;
+  @Column()
   name: string;
+  @Column()
   description: string;
 
   constructor() {
-    if (!this.created_at) {
-      this.created_at = new Date();
-    }
-
     if (!this.id) {
       this.id = crypto.randomUUID();
     }

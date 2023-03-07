@@ -1,15 +1,13 @@
 import { Repository } from "typeorm";
-import { AppDataSource } from "../../../../database/ormconfig";
-import { Category } from "../../entities/Category";
+import AppDataSource from "../../../../database/ormconfig";
+import { Category } from "../../../../entities/Category";
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
-} from "../ICategoriesRespository";
+} from "../ICategoriesRepository";
 
 export class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>;
-
-  private static INSTANCE: CategoriesRepository;
 
   constructor() {
     this.repository = AppDataSource.getRepository(Category);

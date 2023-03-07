@@ -1,4 +1,4 @@
-import { AppDataSource } from "./ormconfig";
+import AppDataSource from "./ormconfig";
 
 AppDataSource.initialize()
   .then(() => console.log("Data Source is running!"))
