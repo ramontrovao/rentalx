@@ -76,6 +76,36 @@
             }
           }
       },
+      "/categories/import": {
+        "post": {
+          "tags": ["Categories"],
+          "summary": "Import a category file",
+          "description": "Upload a new category",
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "file": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Created"
+            },
+            "500": {
+              "description": "Category already exists"
+            }
+          }
+        }
+      },
       "/specifications": {
         "post": {
           "tags": ["Specifications"],
