@@ -7,7 +7,13 @@ export class ImportCategoryController {
     const { file } = req;
     const importCategoryService = container.resolve(ImportCategoryService);
 
-    await importCategoryService.execute(file);
+    try {
+      await importCategoryService.execute(file);
+    } catch {
+      return res.status(400).json({
+        error: { message: "At least one of categories already exists!" },
+      });
+    }
 
     return res.status(201).send();
   }

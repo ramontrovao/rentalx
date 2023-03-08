@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_module --respawn src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli -d ./src/database/ormconfig.ts"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli -d ./src/database/ormconfig.ts",
+    "docker": "docker run --rm -it -v $(pwd):/app -w /app --network rentalx_rentalx_net node:18.14"
   },
   "keywords": [],
   "author": "",

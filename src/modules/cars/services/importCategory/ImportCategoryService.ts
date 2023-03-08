@@ -46,13 +46,15 @@ export class ImportCategoryService {
 
     categories.map(async (category) => {
       const { name, description } = category;
-      const categoryExists = this.categoriesRepository.findByName(name);
+      const categoryExists = await this.categoriesRepository.findByName(name);
 
       if (!categoryExists) {
         await this.categoriesRepository.create({
           name,
           description,
         });
+      } else {
+        return new Error("Category already exists!");
       }
     });
   }

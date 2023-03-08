@@ -23,10 +23,8 @@ services:
       - .:/usr/app
     networks:
       - rentalx_net
-
 volumes:
   pgdata:
 
 networks:
-  rentalx_net:
-    driver: bridge
+  rentalx_net: 

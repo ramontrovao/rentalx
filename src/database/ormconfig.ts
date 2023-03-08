@@ -7,6 +7,6 @@ export default new DataSource({
   username: "docker",
   password: "rentalx",
   database: "rentalx",
-  migrations: [__dirname + "/migrations/*.ts"],
+  migrations: ["./src/database/migrations/*.ts"],
   entities: ["./src/entities/*.ts"],
 });
