@@ -5,7 +5,7 @@ import { IUsersRepository } from "../../repositories/IUsersRepository";
 @injectable()
 export class CreateUserService {
   constructor(
-    @inject("users")
+    @inject("UsersRepository")
     private UsersRepository: IUsersRepository
   ) {}
 

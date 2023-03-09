@@ -1,7 +1,8 @@
 import crypto from "node:crypto";
 
-import { Column, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
+@Entity("users")
 export class User {
   @PrimaryColumn()
   id: string;
